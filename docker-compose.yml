@@ -1,16 +1,16 @@
 services:
-  postgres:
-    container_name: postgres-sql-bsn
-    image: postgres
+  mysql:
+    container_name: mysql-bsn
+    image: mysql:latest
     environment:
-      POSTGRES_USER: username
-      POSTGRES_PASSWORD: password
-      PGDATA: /var/lib/postgresql/data
-      POSTGRES_DB: coworking_spaces
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: coworking_spaces
+      MYSQL_USER: username
+      MYSQL_PASSWORD: password
     volumes:
-      - postgres:/data/postgres
+      - mysql:/var/lib/mysql
     ports:
-      - "5432:5432"
+      - "3306:3306"
     networks:
       - spring-demo
     restart: unless-stopped
@@ -29,5 +29,5 @@ networks:
     driver: bridge
 
 volumes:
-  postgres:
+  mysql:
     driver: local
