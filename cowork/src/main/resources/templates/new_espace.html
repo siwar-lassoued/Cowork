@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un Espace de Travail</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="text-center">Ajouter un Espace de Travail</h1>
+    <form th:action="@{/saveEspace}" th:object="${EspaceForm}" method="post" class="mt-4">
+        <div class="mb-3">
+            <label for="nom" class="form-label">Nom</label>
+            <input type="text" id="nom" class="form-control" th:field="*{nom}" placeholder="Nom de l'espace" required>
+        </div>
+        <div class="mb-3">
+            <label for="typeEspace" class="form-label">Type d'Espace</label>
+            <select id="typeEspace" class="form-select" th:field="*{typeEspace}" required>
+                <option value="" disabled selected>Choisir un type</option>
+                <option value="bureau">Bureau</option>
+                <option value="salle de réunion">Salle de réunion</option>
+                <option value="open space">Open Space</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="capacite" class="form-label">Capacité</label>
+            <input type="number" id="capacite" class="form-control" th:field="*{capacite}" placeholder="Capacité" required>
+        </div>
+        <div class="mb-3">
+            <label for="disponibilite" class="form-label">Disponibilité</label>
+            <select id="disponibilite" class="form-select" th:field="*{disponibilite}">
+                <option value="true">Disponible</option>
+                <option value="false">Non disponible</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Ajouter</button>
+    </form>
+</div>
+</body>
+</html>
